@@ -21,6 +21,11 @@ class Comment < ApplicationRecord
 
   # Comment#photo: returns a row from the photos table associated to this comment by the photo_id column
 
+  belongs_to(:commenter, class_name: "User", foreign_key: "author_id")
+
+  belongs_to(:photo, class_name: "Photo", foreign_key: "photo_id")
+
+=begin
   def commenter
     my_author_id = self.author_id
 
@@ -30,4 +35,6 @@ class Comment < ApplicationRecord
 
     return the_user
   end
+=end
+
 end
